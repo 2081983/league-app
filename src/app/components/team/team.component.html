@@ -1,0 +1,82 @@
+<div class="container">
+    <h3 class="text-center card-header m-3">Team Management</h3>
+
+  <div class="row">
+
+    <div class="col-md-12">
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-offset-1 col-md-5">
+      <div class="card">
+        <div class="card-header bg-primary">
+          <h4 class="text-white">Team Form</h4>
+        </div>
+        <div class="card-body">
+          <form autocomplete="off" [formGroup]="teamForm">
+            <div class="form-group m-3" [ngClass]="{'text-danger':isSubmitted && !this.teamForm.controls['name'].valid}">
+              <label for="">Name</label>
+              <input type="text" class="form-control" id="name" formControlName="name" [ngClass]="{'is-invalid': this.teamForm.controls['name'].dirty && (this.teamForm.controls['name'].hasError('required')  || this.teamForm.controls['name'].hasError('minlength')  ) }">
+              <span class="text-danger" *ngIf="isSubmitted && this.teamForm.controls['name'].hasError('required')">Name Is Required</span>
+              <span class="text-danger" *ngIf="isSubmitted && this.teamForm.controls['name'].hasError('minLength')">Name must be at least 3 char</span>
+            </div>
+            <button type="submit" class="btn btn-success mr-3 mb-2" (click)="save()">Save</button>&nbsp;
+            <button type="button" class="btn btn-danger mb-2" (click)="reset()">reset</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+<div class="col-md-6">
+
+
+
+    <div class="card">
+      <div class="card-header bg-primary">
+        <h4 class="text-white">Team List</h4>
+      </div>
+      <div class="card-body">
+       <table *ngIf="this.serv.list.length>0" style="width:100%" class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of serv.list">
+<td>{{ item.id }}</td>
+<td>{{ item.name }}</td>
+<td>
+  <button class="btn btn-sm btn-primary" (click)="edit(item.id)">Edit</button> &nbsp;
+  <button class="btn btn-sm btn-danger" (click)="deleteItem(item.id)">Delete</button> &nbsp;
+</td>
+        </tr>
+      </tbody>
+      </table>
+ <h4 class="text-danger" *ngIf="this.serv.list.length<=0">there is no Teams in List</h4>
+
+
+
+      </div>
+    </div>
+
+
+
+
+</div>
+
+
+
+
+  </div>
+
+
+
+
+
+
+</div>

@@ -1,0 +1,32 @@
+
+        <form [formGroup]="resForm"   (submit)="onSubmit()" autocomplete="off">
+          <div class="mb-2">
+
+            <div >
+              <label for="mb-1">{{ match.fteamName }}</label>
+              <input [ngClass]="{'is-invalid':this.resForm.controls['FScore'].dirty && !this.resForm.controls['FScore'].valid}" type="number" class="form-control" formControlName="FScore">
+              <span class="text-danger" *ngIf="this.resForm.controls['FScore'].dirty && !this.resForm.controls['FScore'].valid">Required,Min value=0</span>
+            </div>
+            <div >
+              <label for="mb-1">{{ match.secTeamName }}</label>
+              <input type="number" [ngClass]="{'is-invalid':this.resForm.controls['SecScore'].dirty && !this.resForm.controls['SecScore'].valid}" class="form-control"  formControlName="SecScore">
+              <span class="text-danger" *ngIf="this.resForm.controls['SecScore'].dirty && !this.resForm.controls['SecScore'].valid">Required,Min value=0</span>
+
+            </div>
+          </div>
+
+
+
+
+
+
+          <div class="">
+            <button class="btn  btn-success m-2" type="submit">Save</button>
+
+          </div>
+          <div class="d-grid">
+          </div>
+        </form>
+
+
+

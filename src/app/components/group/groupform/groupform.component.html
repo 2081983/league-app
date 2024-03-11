@@ -1,0 +1,50 @@
+
+<div class="row">
+  <div class="col-lg-5 col-md-6">
+    <div class="card">
+      <div class="card-header  bg-info text-white"><h3 class=" m-0 b-0 ">Group Actions</h3></div>
+      <div class="card-body">
+        <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off" [class.submitted]="serv.frmSubmitted" novalidate>
+          <input type="hidden" name="id" [value]="serv.formData.id">
+          <div class="mb-2">
+            <div >
+              <label for="mb-1">Group Name</label>
+              <input class="form-control" #name="ngModel" name="name" placeholder="Enter Name" [(ngModel)]="serv.formData.name"
+              required minlength="3" >
+              <!-- <span *ngIf="this.form.controls['name'].hasError('required')" class="text-danger">Name Required</span>
+              <span *ngIf="this.form.submitted && this.form.controls['name'].hasError('minlength')" class="text-danger">Min Leangth =2</span>
+              <span *ngIf="this.myErr"  class="text-danger">{{ myErr }}</span> -->
+
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <div >
+              <label class="form-label" for="">Team Count</label>
+              <input type="number" min="2" class="form-control" #name="ngModel" placeholder="Enter Team Count" name="teamsCount" [(ngModel)]="serv.formData.teamsCount"
+               required minlength="1" >
+
+               <!-- <span *ngIf="this.form.controls['teamsCount'].dirty && this.form.controls['teamsCount'].hasError('min')" class="text-danger">Min Teams Count =2</span> -->
+            </div>
+
+          </div>
+            <!-- <ul  class="text-danger">
+               <li *ngFor="let item of errorMessages">{{ item }}</li>
+            </ul> -->
+
+
+
+          <div class="">
+            <button class="btn  btn-primary m-2" (click)="resetFrm(form)" type="button">New</button>
+            <button class="btn  btn-success m-2" type="submit">Save</button>
+
+          </div>
+          <div class="d-grid">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+</div>
